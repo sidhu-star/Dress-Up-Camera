@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090c"><title>Dress Up Camera</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<header><a class="brand" href="#"><b>✦</b> Dress Up Camera</a><span>V1 • Virtual Fitting Room</span></header>
+<main>
+<section class="hero"><div><small>AI VIRTUAL TRY-ON</small><h1>See it. Try it. <em>Wear it.</em></h1><p>Build a look from online clothing and preview the outfit with your camera.</p></div><button id="cameraBtn" class="primary">Open Camera</button></section>
+<section class="layout">
+<aside class="panel">
+<div class="title"><div><small>OUTFIT BUILDER</small><h2>Choose your look</h2></div><button id="clearBtn" class="icon">↺</button></div>
+<div class="tabs"><button class="tab active" data-mode="individual">Individual</button><button class="tab" data-mode="whole">Whole Outfit</button></div>
+<div id="categories" class="categories"></div>
+<div class="card"><h3>Add clothing</h3><label class="upload"><input id="fileInput" type="file" accept="image/*"><b>＋ Upload clothing image</b><small>Transparent PNG works best</small></label>
+<div class="or">OR</div><label>Product link</label><div class="url"><input id="productUrl" placeholder="https://shopping-site.com/product/..."><button id="saveLinkBtn">Add</button></div><small>Links are saved with the outfit. Upload the product image for the visual preview.</small></div>
+<div class="card"><div class="title"><h3>Selected outfit</h3><small id="selectedCount">0 items</small></div><div id="selectedItems" class="selected empty">Choose items to build your outfit.</div></div>
+</aside>
+<section class="preview">
+<div class="bar"><b><i></i><span id="status">Camera preview</span></b><div><button id="mirrorBtn" class="mini active">Mirror</button><button id="captureBtn" class="mini">Capture</button></div></div>
+<div id="stage" class="stage"><video id="video" autoplay playsinline muted></video><canvas id="overlay"></canvas><div id="placeholder"><div class="camera-icon">⌁</div><h2>Your virtual fitting room</h2><p>Open the camera and add clothing from the panel.</p><button id="placeholderBtn" class="primary">Start Camera</button></div><label class="tip">Stand 1–2 m away with your upper body visible.</label></div>
+<div class="actions"><button id="photoInputBtn">Use a photo instead</button><button id="downloadBtn" class="primary">Save Preview</button><input id="photoInput" type="file" accept="image/*" hidden></div>
+<div class="notice"><b>V1:</b> camera preview, pose-aware clothing placement, item uploads, Whole Outfit mode and product links. V2 can connect a photorealistic generative virtual try-on model.</div>
+</section></section></main>
+<dialog id="dialog"><form method="dialog"><button class="close">×</button><small>ADD ITEM</small><h2 id="dialogTitle">Choose an item</h2><div id="options" class="options"></div></form></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js"></script>
+<script src="app.js"></script></body></html>
