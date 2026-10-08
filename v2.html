@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090c">
+  <title>Dress Up Camera V2 — AI Virtual Try-On</title>
+  <link rel="stylesheet" href="v2.css">
+</head>
+<body>
+<header><a class="brand" href="index.html"><b>✦</b> Dress Up Camera</a><span>V2 • Generative AI Try-On</span></header>
+<main>
+  <section class="hero"><div><small>REAL AI VIRTUAL TRY-ON</small><h1>Build a look.<br><em>See yourself in it.</em></h1><p>Upload a clear photo of yourself, add garments from product images, and generate a realistic try-on result.</p></div><div class="status" id="apiStatus">Checking AI service…</div></section>
+  <section class="grid">
+    <section class="panel">
+      <h2>1. Your photo</h2><p class="muted">Use a clear, well-lit full-body or upper-body photo. The camera can capture a photo, but generation uses a still image.</p>
+      <div class="upload"><input id="personFile" type="file" accept="image/*"><label for="personFile">＋ Upload your photo</label><small>JPG or PNG</small></div>
+      <button id="cameraOpen" class="secondary">Use camera to take a photo</button>
+      <video id="camera" autoplay playsinline hidden></video><button id="takePhoto" class="secondary" hidden>Capture camera photo</button>
+      <img id="personPreview" class="person-preview" alt="Your photo preview" hidden>
+    </section>
+    <section class="panel">
+      <div class="heading"><h2>2. Build your Whole Outfit</h2><span id="itemCount">0 / 5 items</span></div>
+      <p class="muted">Add one product image for each item. Use clean, well-lit product photos with the garment visible.</p>
+      <div id="garmentRows"></div>
+      <button id="addGarment" class="secondary">＋ Add another item</button>
+      <div class="quality-row"><label for="quality">Generation quality</label><select id="quality"><option value="fast">Fast</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select></div>
+      <button id="generate" class="primary">Generate AI Try-On</button>
+      <p class="muted tiny">Each selected item uses a provider generation step. Multi-item outfits may take longer and use more credits than a single item.</p>
+    </section>
+    <section class="panel result-panel">
+      <div class="heading"><h2>3. AI result</h2><span id="resultState">Waiting for your outfit</span></div>
+      <div id="resultPlaceholder" class="result-placeholder"><div>✧</div><b>Your generated look appears here</b><p>Upload your photo and at least one clothing item, then generate.</p></div>
+      <img id="resultImage" alt="AI virtual try-on result" hidden>
+      <p id="resultMessage" class="muted"></p>
+      <div class="result-actions"><a id="openResult" class="secondary link-button" target="_blank" rel="noreferrer" hidden>Open full image</a><button id="saveResult" class="primary" disabled>Save result</button></div>
+    </section>
+  </section>
+  <p class="footnote">Privacy: photos are sent to the configured AI provider for processing. Do not upload images of someone else without their permission. Product links alone are not scraped; upload the product image from the shopping page.</p>
+</main>
+<script src="v2.js"></script>
+</body></html>
